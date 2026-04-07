@@ -1,0 +1,21 @@
+country,region,r_pearson,R²,coef,significativa
+Norway,Europa,0.205,0.0422,3.2576,✅
+Sweden,Europa,0.205,0.0418,3.3577,✅
+Italy,Europa,0.203,0.0412,3.2236,✅
+India,Asia-Pacífico,0.201,0.0403,3.26,✅
+Poland,Europa,0.189,0.0356,2.9778,✅
+Turkey,Europa,0.181,0.0328,2.8678,✅
+Germany,Europa,0.173,0.0299,2.7391,✅
+Netherlands,Europa,0.172,0.0295,2.7174,✅
+United Kingdom,Europa,0.172,0.0296,2.648,✅
+South Africa,África,0.172,0.0297,2.7063,✅
+Brazil,América,0.169,0.0286,2.6148,✅
+United States,América,0.166,0.0275,2.5736,✅
+Indonesia,Asia-Pacífico,0.165,0.0271,2.661,✅
+Mexico,América,0.162,0.0261,2.4886,✅
+Canada,América,0.159,0.0252,2.538,✅
+France,Europa,0.155,0.0241,2.3561,✅
+Spain,Europa,0.152,0.0231,2.3513,✅
+Australia,Asia-Pacífico,0.147,0.0217,2.3242,✅
+China,Asia-Pacífico,0.146,0.0214,2.3137,✅
+Japan,Asia-Pacífico,0.144,0.0208,2.2751,✅

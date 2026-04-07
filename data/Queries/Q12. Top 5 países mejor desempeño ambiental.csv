@@ -1,0 +1,6 @@
+pais,region,renovable_promedio,co2_promedio,precio_promedio,indice_ambiental
+Turkey,Europa,15.91,432.33,115.32,3.6799
+Indonesia,Asia-Pacifico,15.91,437.79,114.00,3.6337
+"United Kingdom",Europa,16.05,442.86,115.67,3.6253
+Brazil,America,15.96,440.88,115.90,3.6196
+Italy,Europa,15.93,442.61,114.50,3.5991

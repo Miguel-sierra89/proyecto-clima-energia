@@ -1,0 +1,21 @@
+pais,region,precio_promedio,precio_minimo,precio_maximo
+India,Asia-Pacifico,116.90,30.21,199.96
+Norway,Europa,116.68,30.00,199.89
+Spain,Europa,116.25,30.06,199.97
+Netherlands,Europa,116.00,30.34,199.93
+China,Asia-Pacifico,115.99,30.25,199.91
+Germany,Europa,115.90,30.02,199.95
+Brazil,America,115.90,30.02,199.90
+"United States",America,115.79,30.16,199.96
+Poland,Europa,115.69,30.04,199.98
+"United Kingdom",Europa,115.67,30.03,199.91
+Turkey,Europa,115.32,30.08,199.79
+Canada,America,115.08,30.06,199.99
+France,Europa,114.94,30.04,199.87
+Japan,Asia-Pacifico,114.65,30.01,199.89
+Italy,Europa,114.50,30.34,200.00
+"South Africa",Africa,114.47,30.01,199.95
+Sweden,Europa,114.32,30.04,199.82
+Indonesia,Asia-Pacifico,114.00,30.21,199.92
+Mexico,America,113.81,30.14,199.87
+Australia,Asia-Pacifico,113.75,30.02,199.90

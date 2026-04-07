@@ -1,0 +1,5 @@
+region,r_pearson,R²,coef,p_valor,significativa,n
+América,0.164,0.0269,2.5562,0.0,✅,7308
+Asia-Pacífico,0.16,0.0257,2.5553,0.0,✅,9135
+Europa,0.181,0.0326,2.8425,0.0,✅,18270
+África,0.172,0.0297,2.7063,0.0,✅,1827

@@ -1,0 +1,21 @@
+pais,region,temp_promedio,temp_minima,temp_maxima,temp_desviacion
+Japan,Asia-Pacifico,23.67,8.85,38.71,8.27
+Australia,Asia-Pacifico,23.38,8.51,38.45,8.19
+Germany,Europa,22.44,7.68,37.41,8.21
+Italy,Europa,20.50,5.56,35.50,8.14
+Netherlands,Europa,18.98,4.11,34.00,8.25
+Mexico,America,16.57,1.76,31.59,8.25
+Canada,America,16.42,1.49,31.42,8.29
+Spain,Europa,15.84,0.92,30.86,8.28
+China,Asia-Pacifico,15.80,0.92,30.83,8.19
+Poland,Europa,13.16,-1.72,28.19,8.21
+Indonesia,Asia-Pacifico,10.86,-4.08,25.89,8.24
+Brazil,America,10.50,-4.48,25.49,8.23
+France,Europa,10.39,-4.53,25.46,8.18
+Sweden,Europa,9.08,-5.78,24.17,8.22
+Norway,Europa,8.96,-5.89,23.97,8.26
+"United Kingdom",Europa,8.83,-6.16,23.75,8.25
+Turkey,Europa,8.36,-6.59,23.26,8.28
+"United States",America,7.09,-7.86,22.03,8.26
+"South Africa",Africa,5.58,-9.35,20.60,8.17
+India,Asia-Pacifico,5.23,-9.60,20.25,8.31

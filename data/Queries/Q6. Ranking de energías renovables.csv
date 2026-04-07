@@ -1,0 +1,21 @@
+pais,region,renovable_promedio,renovable_minimo,renovable_maximo
+Mexico,America,16.08,5.03,30.58
+"United Kingdom",Europa,16.05,5.03,30.65
+Canada,America,16.03,5.06,30.75
+India,Asia-Pacifico,15.98,5.01,30.70
+France,Europa,15.97,5.01,30.87
+Australia,Asia-Pacifico,15.97,5.02,29.90
+Germany,Europa,15.96,5.03,30.65
+Brazil,America,15.96,5.02,30.13
+Norway,Europa,15.94,5.02,29.74
+Italy,Europa,15.93,5.05,30.08
+"South Africa",Africa,15.93,5.04,30.67
+Netherlands,Europa,15.92,5.05,29.65
+"United States",America,15.92,5.01,30.28
+Japan,Asia-Pacifico,15.92,5.00,30.77
+Turkey,Europa,15.91,5.01,30.24
+Indonesia,Asia-Pacifico,15.91,5.04,30.07
+Spain,Europa,15.89,5.03,30.41
+Sweden,Europa,15.89,5.01,30.34
+China,Asia-Pacifico,15.87,5.00,30.12
+Poland,Europa,15.85,5.03,30.57
