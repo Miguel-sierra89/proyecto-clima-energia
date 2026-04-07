@@ -1,3 +1,6 @@
+![Streamlit](https://img.shields.io/badge/App-Streamlit-red?logo=streamlit)
+[Ver app en vivo ↗](https://proyecto-clima-energia-sd8fjbztidffp2vpv2qhk7.streamlit.app/)
+
 # Análisis Global de Clima y Energía 2020–2024
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
