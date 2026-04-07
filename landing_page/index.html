@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Análisis Global de Clima y Energía 2020–2024</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #021B2E; --deep: #065A82; --teal: #0D9488;
+      --mint: #5EEAD4; --lightbg: #F1F9FF; --gray: #64748B;
+      --text: #1E293B; --card: #FFFFFF; --border: #E2E8F0;
+      --red: #E24B4A; --green: #1D9E75; --amber: #EF9F27;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--lightbg); color: var(--text); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(2,27,46,0.97); backdrop-filter: blur(8px);
+      padding: 0 2rem; height: 58px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(94,234,212,0.15);
+    }
+    .nav-brand { font-size: 0.95rem; font-weight: 700; color: var(--mint); }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--mint); }
+
+    /* HERO */
+    .hero {
+      background: var(--navy); padding: 7rem 2rem 5rem;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-accent {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--teal);
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800;
+      color: #fff; line-height: 1.2; margin-bottom: 0.5rem;
+    }
+    .hero h1 span { color: var(--mint); }
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.65);
+      max-width: 600px; margin: 1rem auto 2.5rem;
+    }
+    .hero-chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+    .chip {
+      background: rgba(13,148,136,0.18); border: 1px solid rgba(94,234,212,0.25);
+      border-radius: 999px; padding: 0.4rem 1.1rem;
+      font-size: 0.88rem; color: var(--mint); font-weight: 500;
+    }
+    .hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.7rem 1.6rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-primary:hover { background: #0f766e; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--mint); border: 1.5px solid rgba(94,234,212,0.4); }
+    .btn-outline:hover { background: rgba(94,234,212,0.08); transform: translateY(-1px); }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.7rem; font-weight: 700; color: var(--deep);
+      margin-bottom: 0.4rem;
+    }
+    .section-sub { color: var(--gray); margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .section-alt { background: #fff; }
+
+    /* KPI GRID */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-bottom: 3rem; }
+    .kpi-card {
+      background: var(--card); border-radius: 12px;
+      border: 1px solid var(--border); padding: 1.3rem 1.2rem;
+      border-left: 4px solid var(--teal);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .kpi-value { font-size: 2rem; font-weight: 800; color: var(--deep); line-height: 1; }
+    .kpi-label { font-size: 0.82rem; color: var(--gray); margin-top: 0.3rem; }
+
+    /* CARDS GRID */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; }
+    .card {
+      background: var(--card); border-radius: 12px;
+      border: 1px solid var(--border); padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1rem;
+    }
+    .card h3 { font-size: 1rem; font-weight: 700; color: var(--deep); margin-bottom: 0.4rem; }
+    .card p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; }
+    .card-tag {
+      display: inline-block; margin-top: 0.8rem;
+      font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.7rem;
+      border-radius: 999px; background: #E0F2FE; color: var(--deep);
+    }
+
+    /* HALLAZGOS TABLE */
+    .hallazgos-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    .hallazgos-table th {
+      background: var(--deep); color: #fff; padding: 0.75rem 1rem;
+      text-align: left; font-weight: 600;
+    }
+    .hallazgos-table td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); }
+    .hallazgos-table tr:nth-child(even) td { background: #F8FBFF; }
+    .hallazgos-table tr:hover td { background: #EFF8FF; }
+    .badge {
+      display: inline-block; font-size: 0.75rem; font-weight: 600;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+    }
+    .badge-teal  { background: #CCFBF1; color: #0F766E; }
+    .badge-red   { background: #FEE2E2; color: #B91C1C; }
+    .badge-amber { background: #FEF3C7; color: #92400E; }
+    .badge-blue  { background: #DBEAFE; color: #1E40AF; }
+    .badge-green { background: #DCFCE7; color: #166534; }
+    .badge-gray  { background: #F1F5F9; color: #475569; }
+
+    /* STACK */
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+    .stack-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem; text-align: center;
+      font-size: 0.85rem; font-weight: 600; color: var(--deep);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .stack-item span { display: block; font-size: 0.75rem; color: var(--gray); font-weight: 400; margin-top: 0.2rem; }
+
+    /* NOTEBOOKS */
+    .notebook-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    .notebook-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1rem 1.2rem;
+      text-decoration: none; color: var(--text);
+      transition: all 0.2s;
+    }
+    .notebook-item:hover { border-color: var(--teal); transform: translateX(4px); }
+    .nb-num {
+      min-width: 32px; height: 32px; border-radius: 8px;
+      background: var(--deep); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700;
+    }
+    .nb-title { font-weight: 600; font-size: 0.92rem; color: var(--deep); }
+    .nb-desc { font-size: 0.8rem; color: var(--gray); }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy); color: rgba(255,255,255,0.6);
+      text-align: center; padding: 2.5rem 2rem;
+      font-size: 0.85rem; border-top: 1px solid rgba(94,234,212,0.1);
+    }
+    footer a { color: var(--mint); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    footer strong { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-brand">Clima &amp; Energía 2020–2024</span>
+    <ul class="nav-links">
+      <li><a href="#proyecto">Proyecto</a></li>
+      <li><a href="#hallazgos">Hallazgos</a></li>
+      <li><a href="#notebooks">Notebooks</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="https://github.com/Miguel-sierra89/proyecto-clima-energia" target="_blank">GitHub ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-accent"></div>
+    <h1>Análisis Global de<br><span>Clima y Energía</span> 2020–2024</h1>
+    <p>Estudio exploratorio de patrones climáticos, emisiones de CO₂ y transición energética en 20 países.</p>
+    <div class="hero-chips">
+      <span class="chip">36,540 registros</span>
+      <span class="chip">20 países</span>
+      <span class="chip">5 años</span>
+      <span class="chip">10 variables</span>
+      <span class="chip">Python · SQL · Plotly</span>
+    </div>
+    <div class="hero-btns">
+      <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia" target="_blank" class="btn btn-primary">Ver repositorio ↗</a>
+      <a href="#proyecto" class="btn btn-outline">Explorar proyecto ↓</a>
+    </div>
+  </header>
+
+  <!-- KPIs -->
+  <section id="proyecto">
+    <div class="section-inner">
+      <h2 class="section-title">El dataset</h2>
+      <p class="section-sub">Datos diarios de clima y energía para 20 países durante 5 años.</p>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">36,540</div><div class="kpi-label">Registros totales</div></div>
+        <div class="kpi-card" style="border-left-color:var(--deep)"><div class="kpi-value">20</div><div class="kpi-label">Países analizados</div></div>
+        <div class="kpi-card" style="border-left-color:var(--amber)"><div class="kpi-value">1,827</div><div class="kpi-label">Registros por país</div></div>
+        <div class="kpi-card" style="border-left-color:var(--green)"><div class="kpi-value">0</div><div class="kpi-label">Valores nulos</div></div>
+        <div class="kpi-card" style="border-left-color:var(--red)"><div class="kpi-value">10</div><div class="kpi-label">Variables</div></div>
+      </div>
+
+      <!-- Pasos del proyecto -->
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon" style="background:#E0F2FE">🔍</div>
+          <h3>Exploración y limpieza</h3>
+          <p>Verificación de calidad, detección de outliers y análisis de distribuciones con Pandas y Missingno.</p>
+          <span class="card-tag">Paso 1</span>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:#DCFCE7">📊</div>
+          <h3>Estadística descriptiva</h3>
+          <p>Medidas de tendencia central, dispersión y análisis temporal por país y región.</p>
+          <span class="card-tag">Paso 2</span>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:#FEF3C7">🗺️</div>
+          <h3>Visualizaciones interactivas</h3>
+          <p>Mapas coropléticos, heatmaps, gráficos de burbujas y dashboards con Plotly.</p>
+          <span class="card-tag">Paso 3</span>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:#FCE7F3">📈</div>
+          <h3>Correlación y regresión</h3>
+          <p>Test de Pearson, regresión lineal y evaluación de modelos con Scikit-learn.</p>
+          <span class="card-tag">Paso 4</span>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:#EDE9FE">🗄️</div>
+          <h3>Base de datos SQL</h3>
+          <p>Esquema MySQL con 36,540 registros y 13 queries analíticas documentadas.</p>
+          <span class="card-tag">Paso 5</span>
+        </div>
+        <div class="card">
+          <div class="card-icon" style="background:#CCFBF1">⚡</div>
+          <h3>Prototipo Streamlit</h3>
+          <p>App interactiva donde el usuario filtra países, años y variables en tiempo real.</p>
+          <span class="card-tag">Paso 10</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALLAZGOS -->
+  <section class="section-alt" id="hallazgos">
+    <div class="section-inner">
+      <h2 class="section-title">Hallazgos principales</h2>
+      <p class="section-sub">Resultados reales obtenidos del análisis estadístico del dataset.</p>
+      <table class="hallazgos-table">
+        <thead>
+          <tr>
+            <th>Dimensión</th>
+            <th>Hallazgo</th>
+            <th>Valor real</th>
+            <th>Relevancia</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Temperatura</strong></td>
+            <td>Asia-Pacífico lidera en calor</td>
+            <td>Media global: 13.58°C</td>
+            <td><span class="badge badge-red">Alta</span></td>
+          </tr>
+          <tr>
+            <td><strong>CO₂</strong></td>
+            <td>Sin tendencia clara a la baja</td>
+            <td>Media global: 445.82</td>
+            <td><span class="badge badge-amber">Media</span></td>
+          </tr>
+          <tr>
+            <td><strong>Renovables</strong></td>
+            <td>Gran brecha entre países</td>
+            <td>Rango: 5% – 30.87%</td>
+            <td><span class="badge badge-green">Alta</span></td>
+          </tr>
+          <tr>
+            <td><strong>Correlación</strong></td>
+            <td>Solo CO₂ vs consumo es significativa</td>
+            <td>r = 0.1718, p ≈ 0.0000</td>
+            <td><span class="badge badge-teal">Técnica</span></td>
+          </tr>
+          <tr>
+            <td><strong>Regresión</strong></td>
+            <td>Modelo lineal simple insuficiente</td>
+            <td>R² = 3.06%</td>
+            <td><span class="badge badge-blue">Metodológica</span></td>
+          </tr>
+          <tr>
+            <td><strong>Dataset</strong></td>
+            <td>Naturaleza sintética confirmada</td>
+            <td>Correlaciones ≈ 0</td>
+            <td><span class="badge badge-gray">Crítica</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- NOTEBOOKS -->
+  <section id="notebooks">
+    <div class="section-inner">
+      <h2 class="section-title">Notebooks del proyecto</h2>
+      <p class="section-sub">Análisis documentado paso a paso en Jupyter Notebook.</p>
+      <div class="notebook-list">
+        <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia/blob/main/notebooks/01_exploracion_limpieza.ipynb" target="_blank" class="notebook-item">
+          <div class="nb-num">01</div>
+          <div><div class="nb-title">Exploración y limpieza</div><div class="nb-desc">EDA, calidad del dato, distribuciones y outliers</div></div>
+        </a>
+        <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia/blob/main/notebooks/02_estadistica_descriptiva.ipynb" target="_blank" class="notebook-item">
+          <div class="nb-num">02</div>
+          <div><div class="nb-title">Estadística descriptiva</div><div class="nb-desc">Análisis por país, región y variables climáticas</div></div>
+        </a>
+        <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia/blob/main/notebooks/03_dashboard_visualizaciones.ipynb" target="_blank" class="notebook-item">
+          <div class="nb-num">03</div>
+          <div><div class="nb-title">Dashboard de visualizaciones</div><div class="nb-desc">Mapas coropléticos, heatmaps y gráficos interactivos</div></div>
+        </a>
+        <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia/blob/main/notebooks/04_correlaciones_regresion.ipynb" target="_blank" class="notebook-item">
+          <div class="nb-num">04</div>
+          <div><div class="nb-title">Correlaciones y regresión</div><div class="nb-desc">Pearson, regresión lineal, R², MAE, RMSE</div></div>
+        </a>
+        <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia/blob/main/notebooks/06_analisis_final_completo.ipynb" target="_blank" class="notebook-item">
+          <div class="nb-num">06</div>
+          <div><div class="nb-title">Análisis final completo</div><div class="nb-desc">Notebook unificado con todo el proyecto documentado</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section class="section-alt" id="stack">
+    <div class="section-inner">
+      <h2 class="section-title">Stack tecnológico</h2>
+      <p class="section-sub">Herramientas utilizadas en el proyecto.</p>
+      <div class="stack-grid">
+        <div class="stack-item">🐍 Python 3.x<span>Lenguaje principal</span></div>
+        <div class="stack-item">🐼 Pandas<span>Análisis de datos</span></div>
+        <div class="stack-item">📊 Plotly<span>Visualización interactiva</span></div>
+        <div class="stack-item">🤖 Scikit-learn<span>Machine learning</span></div>
+        <div class="stack-item">🗄️ MySQL<span>Base de datos</span></div>
+        <div class="stack-item">⚡ Streamlit<span>App interactiva</span></div>
+        <div class="stack-item">📓 Jupyter<span>Notebooks</span></div>
+        <div class="stack-item">🐙 GitHub<span>Control de versiones</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Miguel Sierra</strong> · Talento Tech — Análisis de Datos · 2025</p>
+    <p style="margin-top:0.5rem">
+      <a href="https://github.com/Miguel-sierra89/proyecto-clima-energia" target="_blank">GitHub ↗</a>
+    </p>
+  </footer>
+
+</body>
+</html>
